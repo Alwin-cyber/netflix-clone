@@ -47,7 +47,7 @@ const RowPost = ({title,isSmall,url}) => {
                }
             </div>
             {
-               UrlId && <Youtube opts={opts} videoId={UrlId.key} />
+               UrlId && <Youtube className="youtube" opts={opts} videoId={UrlId.key} />
             }
         </div>
     )

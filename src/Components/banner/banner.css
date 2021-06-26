@@ -56,5 +56,11 @@
         align-items: center;
         justify-content: space-around;
         align-content: space-between;
+        height: 500px;
+    }
+
+    .content{
+        margin-left:40px;
+        margin-right: 10px;
     }
 }
