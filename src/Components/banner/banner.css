@@ -67,5 +67,14 @@
 
     .title{
         padding-top:10px;
+        padding-left: 1rem;
+    }
+
+    .buttons{
+        padding-left: 1rem;
+    }
+
+    .description{
+        padding-left: 1rem;
     }
 }
