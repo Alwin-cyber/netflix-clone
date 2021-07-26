@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../axios';
 import {API_KEY, IMAGE_URL } from '../../constants/constants';
 import Youtube from 'react-youtube';
+import { topPopularity } from '../optimize/validation';
 import './row-post.css';
 
 const RowPost = ({title,isSmall,url}) => {
@@ -11,7 +12,10 @@ const RowPost = ({title,isSmall,url}) => {
 
     useEffect(() => {
         axios.get(url).then((response) => {
-             setPost(response.data.results);
+            console.log(title);
+            let data = topPopularity(response.data.results);
+            console.log(data[0]);
+            setPost(data);
         })
     },[url])
 

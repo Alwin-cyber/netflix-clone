@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../axios';
 //import {SimpleImageSlider as Slider} from 'react-simple-image-slider'
 import { API_KEY, IMAGE_URL } from '../../constants/constants';
+import { topPopularity } from '../optimize/validation';
 import './banner.css';
 
 const Banner = () => {
@@ -10,7 +11,9 @@ const Banner = () => {
 
     useEffect(() => {
         axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then(response => {
-            setMovie(response.data.results[0]);
+            let data = topPopularity(response.data.results);
+            setMovie(data[2]);
+            console.log(data);
         }).catch(error => {
             console.log("error");
         })
