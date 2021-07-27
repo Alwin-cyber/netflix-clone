@@ -45,7 +45,7 @@ const RowPost = ({title,isSmall,url}) => {
     return (
         <div className='row'>
             <h1>{title}</h1>
-            <div className="posters">
+            <div className={Post.length === 0 ? 'loader' : 'posters'}>
                { 
                   Post.map((item) => <img onClick={() => handleVideo(item.id)} className={ isSmall ? 'small-poster' : 'poster'} key={item.id} src={ Post ? IMAGE_URL + item.backdrop_path : ""} alt='poster-pic'/>)
                }

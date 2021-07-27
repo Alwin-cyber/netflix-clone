@@ -12,8 +12,7 @@ const Banner = () => {
     useEffect(() => {
         axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then(response => {
             let data = topPopularity(response.data.results);
-            setMovie(data[2]);
-            console.log(data);
+            setMovie(data[0]);
         }).catch(error => {
             console.log("error");
         })
@@ -22,16 +21,21 @@ const Banner = () => {
     return (
         <div
         style={{backgroundImage: `url(${Movie ? IMAGE_URL + Movie.backdrop_path : ""})`}}
-        className='banner'>
+        className={Movie ? 'banner' : 'loader'}
+       >
              <div className='content'>
                  <h1 className='title'>{Movie ? Movie.title : ""}</h1>
-                 <div className='buttons'>
-                     <button className='button'>Play</button>
-                     <button className='button'>My List</button>
-                 </div>
+                {
+                    Movie ?
+                    <div className='buttons'>
+                        <button className='button'>Play</button>
+                        <button className='button'>My List</button>
+                    </div>
+                    :
+                    ''
+                 }
                  <h1 className='description'>{Movie ? Movie.overview : "" }</h1>
              </div>
-             <div className="fade"></div>
         </div>
     )
 }
